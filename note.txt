@@ -1,0 +1,4 @@
+{'owner': 'Aishwary', 'balance': 500, 'DOB': '2 June 2000', 'pin': '0000'}
+{'owner': 'Om', 'balance': 1500, 'DOB': '2 Feb 2002', 'pin': '0000'}
+{'owner': 'Pratiksh', 'balance': 2500, 'DOB': '22 June 2000', 'pin': '0000'}
+{'owner': 'Shubham', 'balance': 300, 'DOB': '12 June 2001', 'pin': '0000'}

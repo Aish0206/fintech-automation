@@ -2,15 +2,26 @@ class Account: #1. CLASS: Blueprint
 	def __init__(self, owner, balance): #2.__init__: run when you create one
 		self.owner = owner	#3. self + ATTRIBUTES: data this account holds
 		self.balance = balance
+		if self.balance < 0:
+			raise ValueError("Balance cannot be negative")
 
 	def deposit(self,amount): # 4. METHOD: an action the account can do
-		self.balance = self.balance + amount
-		print(self.owner + "'s account is credit with Rs."+str(amount))
-		print(self.owner +" have Rs." + str(self.balance) +" in your account")
+		if amount <0:
+			raise ValueError("Deposit cannot be negative")
+		elif amount ==0:
+			raise ValueError("Deposit cannot be zero")
+		else:
+			self.balance = self.balance + amount
+			print(self.owner + "'s account is credit with Rs."+str(amount))
+			print(self.owner +" have Rs." + str(self.balance) +" in your account")
 
 	def withdraw(self, amount):
 		if amount> self.balance:
-			print("Insufficient balance")
+			raise ValueError("Insufficient balance")
+		elif amount == 0:
+			raise ValueError("Withdraw amount can not be zero")	
+		elif amount < 0:
+			raise ValueError ("Withdraw amount can not be negative")
 		else:
 			self.balance = self.balance - amount
 			print (self.owner +"'s account now have Rs." + str(self.balance)+" left")
@@ -38,24 +49,26 @@ class CurrentsAccount(Account): #CurrentsAccount is inherits from Account (paren
 	def check_balance(self):
 		print(self.owner + "'s account have Rs." + str(self.balance)+" (including overdraft limits)")
 
-#using the blueprint to make a real account (an "object" or an "instance")
-acc = Account("Aishwary", 1000)
-acc.deposit(500)
-acc.withdraw(300)
-acc.check_balance()
-print("xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx\n")
+if __name__ =="__main__":
+	
+	#using the blueprint to make a real account (an "object" or an "instance")
+	acc = Account("Aishwary", 1000)
+	acc.deposit(500)
+	acc.withdraw(300)
+	acc.check_balance()
+	print("xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx\n")
 
-sav_acc = SavingsAccount("Pratiksha", 1000, 5)
-sav_acc.deposit(2500)
-sav_acc.withdraw(300)
-sav_acc.add_interest()
-sav_acc.check_balance()
-print("xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx\n")
+	sav_acc = SavingsAccount("Pratiksha", 1000, 5)
+	sav_acc.deposit(2500)
+	sav_acc.withdraw(300)
+	sav_acc.add_interest()
+	sav_acc.check_balance()
+	print("xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx\n")
 
-cur_acc = CurrentsAccount("Om", 2000, 1000)
-cur_acc.update_current_account_balance()
+	cur_acc = CurrentsAccount("Om", 2000, 1000)
+	cur_acc.update_current_account_balance()
 
-cur_acc.deposit(500)
-cur_acc.check_balance()
-cur_acc.withdraw(3000)
-cur_acc.check_balance()
+	cur_acc.deposit(500)
+	cur_acc.check_balance()
+	cur_acc.withdraw(3000)
+	cur_acc.check_balance()
