@@ -23,11 +23,11 @@ class TestAccount:
         acc3 = Account("C", 200)
         with pytest.raises(ValueError, match="Deposit cannot be zero"):
             acc2.deposit(0)
-            assert acc2.balance == 700
+        assert acc2.balance == 700
              
         with pytest.raises(ValueError, match="Deposit cannot be negative"):
             acc3.deposit(-100)
-            assert acc3.balance == 200
+        assert acc3.balance == 200
          
     def test_withdraw(self):   
         acc1 = Account("A", 1000)
@@ -42,15 +42,15 @@ class TestAccount:
 
         with pytest.raises(ValueError, match="Withdraw amount can not be zero"):
             acc2.withdraw(0)
-            assert acc2.balance == 700
+        assert acc2.balance == 700
              
         with pytest.raises(ValueError, match="Withdraw amount can not be negative"):
             acc3.withdraw(-100)
-            assert acc3.balance == 200
+        assert acc3.balance == 200
 
         with pytest.raises(ValueError, match="Insufficient balance"):
             acc1.withdraw(1001)
-            assert acc1.balance == 1000
+        assert acc1.balance == 1000
     
     def test_check_balance(self):
         acc1 = Account("A",0)
