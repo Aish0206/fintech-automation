@@ -31,3 +31,4 @@ def test_homepage_title(page: Page):
     # Playwright automatically waits until the expected title appears
     # before failing the test.
     expect(page).to_have_title(re.compile("Playwright"))
+    
