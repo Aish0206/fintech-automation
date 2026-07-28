@@ -21,4 +21,4 @@ def test_successful_login(page: Page):
 def test_failed_login(page: Page):
     login(page,"wrong_user","wrong_pass")
 
-    expect(page.get_by_text("The username and password could not be verified.")).to_be_visible()
+    expect(page.get_by_text("An internal error has occurred and has been logged.")).to_be_visible()
